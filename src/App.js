@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
@@ -11,31 +10,33 @@ function App() {
         <header className="App-header">
           <nav>
             <ul>
-              <img
-                src="https://www.pngkey.com/png/full/422-4223574_dog-and-cat-cartoon.png"
-                alt="HelloFresh logo"
-                class="logo"
-                href="https://www.petsavers.com/"
-                target="_self"
-                title="Home"
-              />
+              <a href="https://www.petsavers.com/">
+                <img
+                  src="https://www.pngkey.com/png/full/422-4223574_dog-and-cat-cartoon.png"
+                  alt="HelloFresh logo"
+                  class="logo"
+                  title="Home"
+                />
+              </a>
               <li class="header-link">
-                <a
+                <div
+                  class="header-link-text"
                   href="https://www.petsavers.com/cats"
                   target="_self"
                   title="Cats"
                 >
                   Find a Cat
-                </a>
+                </div>
               </li>
               <li class="header-link">
-                <a
+                <div
+                  class="header-link-text"
                   href="https://www.petsavers.com/dogs"
                   target="_self"
                   title="Dogs"
                 >
                   Find a Dog
-                </a>
+                </div>
               </li>
               <div class="search">
                 <img
@@ -53,7 +54,7 @@ function App() {
           </nav>
         </header>
       </body>
-      <h1>Pet Savers</h1>
+      <h1 class="page-title">Pet Savers</h1>
       <main></main>
     </>
   );
