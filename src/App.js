@@ -1,4 +1,9 @@
 import "./App.css";
+import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
+import LeftNavigation from "./Header/LeftNavigation";
+import RightNavigation from "./Header/RightNavigation/RightNavigation";
 
 function App() {
   return (
@@ -8,54 +13,33 @@ function App() {
       </head>
       <body className="App">
         <header className="App-header">
-          <nav>
-            <ul>
-              <a href="https://www.petsavers.com/">
-                <img
-                  src="https://www.pngkey.com/png/full/422-4223574_dog-and-cat-cartoon.png"
-                  alt="HelloFresh logo"
-                  class="logo"
-                  title="Home"
-                />
-              </a>
-              <li class="header-link">
-                <div
-                  class="header-link-text"
-                  href="https://www.petsavers.com/cats"
-                  target="_self"
-                  title="Cats"
-                >
-                  Find a Cat
-                </div>
-              </li>
-              <li class="header-link">
-                <div
-                  class="header-link-text"
-                  href="https://www.petsavers.com/dogs"
-                  target="_self"
-                  title="Dogs"
-                >
-                  Find a Dog
-                </div>
-              </li>
-              <div class="search">
-                <img
-                  src="https://www.pngkey.com/png/full/16-164810_transparent-search-icon-png.png"
-                  alt="search"
-                  class="search-img"
-                />
-                <input
-                  class="searchbar"
-                  type="text"
-                  placeholder="Search..."
-                ></input>
-              </div>
-            </ul>
-          </nav>
+          <LeftNavigation />
+          <RightNavigation />
         </header>
       </body>
-      <h1 class="page-title">Pet Savers</h1>
-      <main></main>
+      <main>
+        <Typography
+          variant="h2"
+          style={{
+            textAlign: "center",
+            paddingTop: "15px",
+            paddingBottom: "15px",
+          }}
+        >
+          Pet Savers
+        </Typography>
+        <Grid container justifyContent="center" spacing={3}>
+          <Grid item>
+            <Paper style={{ height: 75, width: 50 }} />
+          </Grid>
+          <Grid item>
+            <Paper style={{ height: 75, width: 50 }} />
+          </Grid>
+          <Grid item>
+            <Paper style={{ height: 75, width: 50 }} />
+          </Grid>
+        </Grid>
+      </main>
     </>
   );
 }
