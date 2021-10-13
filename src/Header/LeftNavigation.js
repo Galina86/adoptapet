@@ -27,13 +27,7 @@ const LeftNavigation = () => {
       >
         Find a Cat
       </Link>
-      <Link
-        href="dogs"
-        underline="hover"
-        style={{
-          ...linkStyles,
-        }}
-      >
+      <Link href="dogs" underline="hover" style={linkStyles}>
         Find a Dog
       </Link>
     </nav>
