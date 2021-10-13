@@ -4,9 +4,8 @@ const LeftNavigation = () => {
   return (
     <nav
       style={{
-        width: "35%",
+        width: "49%",
         display: "flex",
-        justifyContent: "space-between",
         alignItems: "center",
       }}
     >
@@ -23,8 +22,9 @@ const LeftNavigation = () => {
         underline="hover"
         style={{
           color: "whitesmoke",
-          fontSize: "30px",
+          fontSize: "26px",
           fontFamily: "Source Sans Pro",
+          marginRight: "40px",
         }}
       >
         Find a Cat
@@ -34,7 +34,7 @@ const LeftNavigation = () => {
         underline="hover"
         style={{
           color: "whitesmoke",
-          fontSize: "30px",
+          fontSize: "26px",
           fontFamily: "Source Sans Pro",
         }}
       >

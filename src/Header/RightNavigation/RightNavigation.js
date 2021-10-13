@@ -5,7 +5,7 @@ const RightNavigation = () => {
   return (
     <div
       style={{
-        width: "30%",
+        width: "49%",
         display: "flex",
         alignItems: "center",
         justifyContent: "flex-end",

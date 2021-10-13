@@ -5,10 +5,12 @@ const LogInButton = () => {
   return (
     <Button
       variant="contained"
-      size="large"
+      size="small"
       style={{
         backgroundColor: "whitesmoke",
         marginRight: "40px",
+        borderRadius: "5px",
+        padding: "9px",
       }}
     >
       <Typography
