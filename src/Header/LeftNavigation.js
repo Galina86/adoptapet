@@ -21,9 +21,7 @@ const LeftNavigation = () => {
         href="cats"
         underline="hover"
         style={{
-          color: "whitesmoke",
-          fontSize: "26px",
-          fontFamily: "Source Sans Pro",
+          ...linkStyles,
           marginRight: "40px",
         }}
       >
@@ -33,15 +31,19 @@ const LeftNavigation = () => {
         href="dogs"
         underline="hover"
         style={{
-          color: "whitesmoke",
-          fontSize: "26px",
-          fontFamily: "Source Sans Pro",
+          ...linkStyles,
         }}
       >
         Find a Dog
       </Link>
     </nav>
   );
+};
+
+const linkStyles = {
+  color: "whitesmoke",
+  fontSize: "26px",
+  fontFamily: "Source Sans Pro",
 };
 
 export default LeftNavigation;
