@@ -1,45 +1,35 @@
 import "./App.css";
-import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
-import LeftNavigation from "./Header/LeftNavigation";
-import RightNavigation from "./Header/RightNavigation/RightNavigation";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import LeftNavigation from "./Components/Header/LeftNavigation";
+import RightNavigation from "./Components/Header/RightNavigation/RightNavigation";
+import PetCardsContainer from "./Components/PetCardsContainer";
+import CatCardsContainer from "./Components/CatCardsContainer";
+import DogCardsContainer from "./Components/DogCardsContainer";
 
 function App() {
   return (
     <>
-      <head>
-        <title>Pet Savers</title>
-      </head>
       <body className="App">
-        <header className="App-header">
-          <LeftNavigation />
-          <RightNavigation />
-        </header>
+        <Router>
+          <header className="App-header">
+            <LeftNavigation />
+            <RightNavigation />
+          </header>
+          <Switch>
+            <Route exact path="/dogs/:id"></Route>
+            <Route exact path="/cats/:id"></Route>
+            <Route exact path="/dogs">
+              <DogCardsContainer />
+            </Route>
+            <Route exact path="/cats">
+              <CatCardsContainer />
+            </Route>
+            <Route exact path="/">
+              <PetCardsContainer />
+            </Route>
+          </Switch>
+        </Router>
       </body>
-      <main>
-        <Typography
-          variant="h2"
-          style={{
-            textAlign: "center",
-            paddingTop: "15px",
-            paddingBottom: "15px",
-          }}
-        >
-          Pet Savers
-        </Typography>
-        <Grid container justifyContent="center" spacing={3}>
-          <Grid item>
-            <Paper style={{ height: 75, width: 50 }} />
-          </Grid>
-          <Grid item>
-            <Paper style={{ height: 75, width: 50 }} />
-          </Grid>
-          <Grid item>
-            <Paper style={{ height: 75, width: 50 }} />
-          </Grid>
-        </Grid>
-      </main>
     </>
   );
 }
