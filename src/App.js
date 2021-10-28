@@ -6,19 +6,19 @@ import RightNavigation from "./Components/Header/RightNavigation/RightNavigation
 import PetCardsContainer from "./Components/PetCardsContainer";
 import CatCardsContainer from "./Components/CatCardsContainer";
 import DogCardsContainer from "./Components/DogCardsContainer";
+import fetchOauthToken from "./api/oauth-token";
 
 export const AuthContext = createContext();
 
-function App({ Component, pageProps }) {
+function App() {
   const [accessToken, setAccessToken] = useState(null);
 
   useEffect(() => {
-    const fetchAccessToken = async () => {
-      const res = await fetch("/api/oauth-token");
-      const json = await res.json();
-      setAccessToken(json.access_token);
-    };
-    fetchAccessToken();
+    async function fetchToken() {
+      const authToken = await fetchOauthToken();
+      setAccessToken(authToken.access_token);
+    }
+    fetchToken();
   }, []);
 
   return (
@@ -40,9 +40,7 @@ function App({ Component, pageProps }) {
                 <CatCardsContainer />
               </Route>
               <Route exact path="/">
-                <PetCardsContainer>
-                  <Component {...pageProps} />
-                </PetCardsContainer>
+                <PetCardsContainer></PetCardsContainer>
               </Route>
             </Switch>
           </Router>

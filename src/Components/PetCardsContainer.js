@@ -8,7 +8,7 @@ const PetCardsContainer = (props) => {
   const [results, setResults] = useState(null);
   const accessToken = useContext(AuthContext);
   useEffect(() => {
-    if (accessToken === null) return;
+    if (accessToken === null) return null;
     const fetchPets = async () => {
       const petResults = await fetch("https://api.petfinder.com/v2/animals", {
         headers: {
@@ -20,9 +20,8 @@ const PetCardsContainer = (props) => {
     };
     fetchPets();
   }, [accessToken]);
-  if (results === null) return null;
 
-  if (props.loading) {
+  if (!results) {
     return <LinearProgress style={{ width: "100%", height: 5 }} />;
   }
 
@@ -33,7 +32,7 @@ const PetCardsContainer = (props) => {
       justify="center"
       alignItems="center"
     >
-      {props.results.map((result) => (
+      {results.map((result) => (
         <AnimalCard key={result.id} result={result} />
       ))}
     </Grid>

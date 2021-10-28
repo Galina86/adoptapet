@@ -1,7 +1,7 @@
 const petFinderKey = "c8CiKEI1WZbFyRSzWVhIoAlQUsYdUGaDAsJBrWMlW2LTD0SYGx";
 const petFinderSecret = "vOw4xA1qfoRqeIOeQjB8U9oRHwfy3PIk5WeVQ5bT";
 
-const fetchOauthToken = async (req, res) => {
+const fetchOauthToken = async () => {
   const params = new URLSearchParams();
   params.append("grant_type", "client_credentials");
   params.append("client_id", petFinderKey);
@@ -14,7 +14,7 @@ const fetchOauthToken = async (req, res) => {
     }
   );
   const data = await petfinderRes.json();
-  res.send(data);
+  return data;
 };
 
 export default fetchOauthToken;
