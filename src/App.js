@@ -9,7 +9,7 @@ import DogCardsContainer from "./Components/DogCardsContainer";
 
 export const AuthContext = createContext();
 
-function App() {
+function App({ Component, pageProps }) {
   const [accessToken, setAccessToken] = useState(null);
 
   useEffect(() => {
@@ -40,7 +40,9 @@ function App() {
                 <CatCardsContainer />
               </Route>
               <Route exact path="/">
-                <PetCardsContainer />
+                <PetCardsContainer>
+                  <Component {...pageProps} />
+                </PetCardsContainer>
               </Route>
             </Switch>
           </Router>
