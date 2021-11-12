@@ -1,5 +1,5 @@
-const petFinderKey = "c8CiKEI1WZbFyRSzWVhIoAlQUsYdUGaDAsJBrWMlW2LTD0SYGx";
-const petFinderSecret = "vOw4xA1qfoRqeIOeQjB8U9oRHwfy3PIk5WeVQ5bT";
+const petFinderKey = process.env.PET_FINDER_KEY;
+const petFinderSecret = process.env.PET_FINDER_SECRET;
 
 const fetchOauthToken = async () => {
   const params = new URLSearchParams();
