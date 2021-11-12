@@ -1,5 +1,5 @@
-const petFinderKey = process.env.PET_FINDER_KEY;
-const petFinderSecret = process.env.PET_FINDER_SECRET;
+const petFinderKey = process.env.REACT_APP_PET_FINDER_KEY;
+const petFinderSecret = process.env.REACT_APP_PET_FINDER_SECRET;
 
 const fetchOauthToken = async () => {
   const params = new URLSearchParams();
