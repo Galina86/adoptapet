@@ -1,38 +1,42 @@
-import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
+import React, { useEffect, useContext, useState } from "react";
+import LinearProgress from "@material-ui/core/LinearProgress";
+import { Grid } from "@material-ui/core";
+import AnimalCard from "./AnimalCard";
+import { AuthContext } from "../App";
 
-const PetCardsContainer = () => (
-  <main>
-    <h1
-      style={{
-        textAlign: "center",
-        paddingTop: "40px",
-        paddingBottom: "15px",
-      }}
+const PetCardsContainer = (props) => {
+  const [results, setResults] = useState(null);
+  const accessToken = useContext(AuthContext);
+  useEffect(() => {
+    if (accessToken === null) return null;
+    const fetchPets = async () => {
+      const petResults = await fetch("https://api.petfinder.com/v2/animals", {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      const json = await petResults.json();
+      setResults(json.animals);
+    };
+    fetchPets();
+  }, [accessToken]);
+
+  if (!results) {
+    return <LinearProgress style={{ width: "100%", height: 5 }} />;
+  }
+
+  return (
+    <Grid
+      style={{ width: "100%" }}
+      container
+      justify="center"
+      alignItems="center"
     >
-      Welcome to Pet Savers!
-    </h1>
-    <h2
-      style={{
-        textAlign: "center",
-        paddingTop: "15px",
-        paddingBottom: "15px",
-      }}
-    >
-      Our pets
-    </h2>
-    <Grid container justifyContent="center" spacing={3}>
-      <Grid item>
-        <Paper style={{ height: 75, width: 50 }} />
-      </Grid>
-      <Grid item>
-        <Paper style={{ height: 75, width: 50 }} />
-      </Grid>
-      <Grid item>
-        <Paper style={{ height: 75, width: 50 }} />
-      </Grid>
+      {results.map((result) => (
+        <AnimalCard key={result.id} result={result} />
+      ))}
     </Grid>
-  </main>
-);
+  );
+};
 
 export default PetCardsContainer;
