@@ -4,12 +4,10 @@ import {
   Grid,
   Card,
   CardActionArea,
-  CardHeader,
   CircularProgress,
 } from "@material-ui/core";
-
-import PetsIcon from "@material-ui/icons/Pets";
 import { makeStyles } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   card: {
@@ -41,7 +39,6 @@ const AnimalCard = (props) => {
           backgroundColor: "rgb(200,200,200)",
         }}
       >
-        (
         <CardMedia
           component="img"
           className={classes.image}
@@ -49,48 +46,48 @@ const AnimalCard = (props) => {
           onLoad={() => setImageLoading(false)}
           style={imageLoading ? { display: "none" } : {}}
         />
-        ){imageLoading && <CircularProgress />}
+        {imageLoading && <CircularProgress />}
       </div>
     );
   } else {
-    ImageComponent = () => (
-      <div
-        className={classes.image}
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexDirection: "column",
-          backgroundColor: "rgb(200,200,200)",
-        }}
-      >
-        <PetsIcon fontSize={"large"} />
-        <span>No Photo Found</span>
-      </div>
-    );
+    return null;
   }
 
   return (
     <Grid item xs={6} lg={3} style={{ padding: 5 }}>
-      <a style={{ textDecoration: "none" }} href={result.url}>
+      <Link
+        style={{ textDecoration: "none" }}
+        to={`/animal/${result.id}`}
+        key={result.id}
+      >
         <Card className={classes.card}>
           <CardActionArea>
             <ImageComponent />
-            <CardHeader
-              title={result.name}
-              titleTypographyProps={{
-                style: {
-                  margin: "auto",
-                  textAlign: "center",
-                  textDecoration: "none",
-                },
-                color: "textPrimary",
-                variant: "h6",
+            <div
+              style={{
+                display: "flex",
+                width: "100%",
+                justifyContent: "space-around",
+                fontSize: "20px",
+                padding: "5px 0 5px 0",
               }}
-            />
+            >
+              {result.name}
+            </div>
+            <div
+              style={{
+                display: "flex",
+                width: "100%",
+                justifyContent: "space-around",
+                fontSize: "16px",
+                paddingBottom: "5px",
+              }}
+            >
+              {result.gender}, {result.age}
+            </div>
           </CardActionArea>
         </Card>
-      </a>
+      </Link>
     </Grid>
   );
 };
