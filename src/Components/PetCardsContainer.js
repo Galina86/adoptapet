@@ -10,11 +10,14 @@ const PetCardsContainer = (props) => {
   useEffect(() => {
     if (accessToken === null) return null;
     const fetchPets = async () => {
-      const petResults = await fetch("https://api.petfinder.com/v2/animals", {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      });
+      const petResults = await fetch(
+        "https://api.petfinder.com/v2/animals?limit=100",
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
       const json = await petResults.json();
       setResults(json.animals);
     };

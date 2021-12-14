@@ -11,7 +11,7 @@ const CatCardsContainer = (props) => {
     if (accessToken === null) return null;
     const fetchPets = async () => {
       const petResults = await fetch(
-        "https://api.petfinder.com/v2/animals?type=cat",
+        "https://api.petfinder.com/v2/animals?type=cat&limit=100",
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
