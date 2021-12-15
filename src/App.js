@@ -7,6 +7,7 @@ import PetCardsContainer from "./Components/PetCardsContainer";
 import CatCardsContainer from "./Components/CatCardsContainer";
 import DogCardsContainer from "./Components/DogCardsContainer";
 import fetchOauthToken from "./api/oauth-token";
+import PetDetailsPage from "./Components/PetDetailsPage";
 
 export const AuthContext = createContext();
 
@@ -37,7 +38,9 @@ function App() {
               <RightNavigation />
             </header>
             <Switch>
-              <Route exact path="/animal/:id"></Route>
+              <Route exact path="/animal/:id">
+                <PetDetailsPage />
+              </Route>
               <Route exact path="/dogs">
                 <DogCardsContainer />
               </Route>
