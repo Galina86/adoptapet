@@ -8,7 +8,7 @@ const CatCardsContainer = (props) => {
   const [results, setResults] = useState(null);
   const accessToken = useContext(AuthContext);
   useEffect(() => {
-    if (accessToken === null) return null;
+    if (accessToken === undefined) return null;
     const fetchPets = async () => {
       const petResults = await fetch(
         "https://api.petfinder.com/v2/animals?type=cat&limit=100",
