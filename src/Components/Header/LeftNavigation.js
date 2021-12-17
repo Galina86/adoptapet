@@ -17,7 +17,7 @@ const LeftNavigation = () => (
       />
     </a>
     <Link
-      href="cats"
+      href="/cats"
       underline="hover"
       style={{
         ...linkStyles,
@@ -26,7 +26,7 @@ const LeftNavigation = () => (
     >
       Find a Cat
     </Link>
-    <Link href="dogs" underline="hover" style={linkStyles}>
+    <Link href="/dogs" underline="hover" style={linkStyles}>
       Find a Dog
     </Link>
   </nav>

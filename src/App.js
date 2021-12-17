@@ -7,6 +7,7 @@ import PetCardsContainer from "./Components/PetCardsContainer";
 import CatCardsContainer from "./Components/CatCardsContainer";
 import DogCardsContainer from "./Components/DogCardsContainer";
 import fetchOauthToken from "./api/oauth-token";
+import PetDetailsPage from "./Components/PetDetailsPage";
 
 export const AuthContext = createContext();
 
@@ -26,13 +27,20 @@ function App() {
       <AuthContext.Provider value={accessToken}>
         <body className="App">
           <Router>
-            <header className="App-header">
+            <header
+              className="App-header"
+              style={{
+                zIndex: 1,
+                position: "fixed",
+              }}
+            >
               <LeftNavigation />
               <RightNavigation />
             </header>
             <Switch>
-              <Route exact path="/dogs/:id"></Route>
-              <Route exact path="/cats/:id"></Route>
+              <Route exact path="/animal/:id">
+                <PetDetailsPage />
+              </Route>
               <Route exact path="/dogs">
                 <DogCardsContainer />
               </Route>
@@ -40,7 +48,7 @@ function App() {
                 <CatCardsContainer />
               </Route>
               <Route exact path="/">
-                <PetCardsContainer></PetCardsContainer>
+                <PetCardsContainer />
               </Route>
             </Switch>
           </Router>
